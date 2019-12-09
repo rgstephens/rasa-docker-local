@@ -28,8 +28,8 @@ RUN ls -l rasa-webchat
 
 WORKDIR /app/rasa-webchat
 
-COPY ./docker-local/webpack.sara.js .
-COPY ./docker-local/sara.html .
+COPY ./docker-local/webpack.dev.js .
+COPY ./docker-local/index.html .
 RUN rm package-lock.json
 
 EXPOSE 8080
@@ -39,5 +39,5 @@ RUN ls -l
 
 RUN yarn
 
-CMD yarn run webpack-dev-server --config webpack.sara.js --host 0.0.0.0 --port 8080
+CMD yarn run webpack-dev-server --config webpack.dev.js --host 0.0.0.0 --port 8080
 #ENTRYPOINT ["/entrypoint.sh"]
