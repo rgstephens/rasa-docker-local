@@ -6,7 +6,12 @@ From the existing rasa root directory:
 
 ```
 git clone https://github.com/rgstephens/rasa-docker-local docker-local
-cp docker-local/docker-compose.yml
+```
+
+Update [rasa](https://hub.docker.com/r/rasa/rasa/tags) and [rasa-sdk](https://hub.docker.com/r/rasa/rasa-sdk/tags) versions in `docker-compose.yml` and `Dockefile.app` if needed. When running `build` command lookup latest [rasa-x](https://hub.docker.com/u/rasa) version first and replace in command.
+
+```
+cp docker-local/docker-compose.yml .
 docker run -v $(pwd):/app rasa/rasa:1.5.2-full train --augmentation 0 --config config.yml
 docker-compose build --no-cache --build-arg RASA_X_VERSION=0.23.3
 docker-compose up -d

@@ -28,7 +28,7 @@ services:
       - "8000:8000"
     command: ["duckling-example-exe", "--no-access-log", "--no-error-log"]
   app:
-    image: rasa/rasa-sdk:1.5.1
+    image: rasa/rasa-sdk:1.5.2
     #build:
     #  context: ./
     #  dockerfile: docker-local/Dockerfile.app
