@@ -1,6 +1,6 @@
 # Rasa Docker Local
 
-This project allows you to use Docker compose to run an existing Rasa project.
+This project allows you to use Docker compose to run an existing Rasa project with **Rasa X** and **[Mr. Bot](https://github.com/botfront/rasa-webchat)**.
 
 From the existing rasa root directory:
 

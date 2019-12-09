@@ -6,7 +6,6 @@ docker-compose.override.yml
 *.log
 models
 *.egg-info
-docker-compose.yml
 failed_stories.txt
 failed_stories.md
 story_confmat.pdf
