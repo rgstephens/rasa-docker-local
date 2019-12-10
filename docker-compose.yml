@@ -11,16 +11,13 @@ services:
     build:
       context: ./
       dockerfile: docker-local/Dockerfile.rasax
-    environment:
-      - RASA_X_VERSION=${RASA_X_VERSION}
-      - RASA_HOME=/app
     ports:
       - "5005:5005"
       - "5002:5002"
     volumes:
       - ./:/app
-    command: rasa x --no-prompt  --port 5005 --cors "*" --debug
-    #command: rasa x --no-prompt --endpoints /app/docker-local/endpoints.yml --credentials /app/docker-local/credentials.yml  --port 5005 --cors "*" --debug
+    #command: rasa x --no-prompt --port 5005 --cors "*" --debug
+    command: rasa x --no-prompt --endpoint docker-local/endpoints.yml --port 5005 --cors "*" --debug
   duckling:
     restart: always
     image: "rasa/duckling:latest"
@@ -28,12 +25,15 @@ services:
       - "8000:8000"
     command: ["duckling-example-exe", "--no-access-log", "--no-error-log"]
   app:
-    image: rasa/rasa-sdk:1.5.2
+    image: rasa/rasa-sdk:1.5.1
     #build:
     #  context: ./
     #  dockerfile: docker-local/Dockerfile.app
+    volumes:
+      - ./actions:/app/actions
     ports:
       - "5055:5055"
+    command: ["start", "--actions", "actions.actions"]
   mrbot:
     build:
       context: ./

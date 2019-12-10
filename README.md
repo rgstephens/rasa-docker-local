@@ -8,13 +8,17 @@ From the existing rasa root directory:
 git clone https://github.com/rgstephens/rasa-docker-local docker-local
 ```
 
-Update [rasa](https://hub.docker.com/r/rasa/rasa/tags) and [rasa-sdk](https://hub.docker.com/r/rasa/rasa-sdk/tags) versions in `docker-compose.yml` and `Dockefile.app` if needed. When running `build` command lookup latest [rasa-x](https://hub.docker.com/u/rasa) version first and replace in command.
+You should check the following:
+
+* Update the [rasa-sdk](https://hub.docker.com/r/rasa/rasa-sdk/tags) version in `docker-compose.yml` and `Dockefile.app` if needed.
+* If your action agent is not in the `actions` directory, update the location in the `docker-compose.yml`
+* When running `build` command lookup latest [rasa-x](https://hub.docker.com/u/rasa) version first and replace in command.
 
 ```
 cp docker-local/docker-compose.yml .
 docker run -v $(pwd):/app rasa/rasa:1.5.2-full train --augmentation 0 --config config.yml
 docker-compose build --no-cache --build-arg RASA_X_VERSION=0.23.3
-docker-compose up -d
+docker-compose up -d rasa duckling app # starts all containers except Mr. Bot
 docker-compose logs | grep password  # to get the Rasa X password
 ```
 
@@ -36,3 +40,8 @@ Version information is kept for `rasa`, `rasa-x` and `rasa-sdk`. To upgrade, cha
 | docker-compose.yml        | rasa-sdk                          |
 | Dockerfile.rasax          | Version passed as build parameter |
 | Dockerfile.app (optional) | rasa-sdk                          |
+
+
+## ToDo
+
+* Assign images for Rasa and Mr. Bot names so they can be shared across projects
