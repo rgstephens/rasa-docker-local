@@ -34,10 +34,10 @@ services:
     ports:
       - "5055:5055"
     command: ["start", "--actions", "actions.actions"]
-  mrbot:
-    build:
-      context: ./
-      dockerfile: docker-local/Dockerfile.mrbot
-    ports:
-      - "8080:8080"
-    command: yarn run webpack-dev-server --config webpack.dev.js --host 0.0.0.0
+#  mrbot:
+#    build:
+#      context: ./
+#      dockerfile: docker-local/Dockerfile.mrbot
+#    ports:
+#      - "8080:8080"
+#    command: yarn run webpack-dev-server --config webpack.dev.js --host 0.0.0.0
