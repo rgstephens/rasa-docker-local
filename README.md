@@ -16,14 +16,14 @@ You should check the following:
 
 ```
 cp docker-local/docker-compose.yml .
-docker run -v $(pwd):/app rasa/rasa:1.5.2-full train --augmentation 0 --config config.yml
+docker run -v $(pwd):/app rasa/rasa:1.5.2-full train
 docker-compose build --no-cache --build-arg RASA_X_VERSION=0.23.3
-docker-compose up -d rasa duckling app # starts all containers except Mr. Bot
+docker-compose up -d
 docker-compose logs | grep password  # to get the Rasa X password
 ```
 
 * Browse to http://localhost:5002 for Rasa X
-* Browse to http://localhost:8080 for Mr. Bot
+* Browse to http://localhost:8080 for Mr. Bot (if enabled in `docker-compose.yml`)
 
 To get around the Mr. Bot links opening tab issue, build Mr. Bot with this command:
 
